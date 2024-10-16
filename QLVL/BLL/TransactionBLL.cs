@@ -13,10 +13,6 @@ namespace QLVL.BLL
             transactionDAL = new TransactionDAL(connectionString);
         }
 
-        public List<Transaction> GetAllTransactions()
-        {
-            return transactionDAL.GetAllTransactions();
-        }
 
         public void AddTransaction(Transaction transaction)
         {

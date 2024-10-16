@@ -30,6 +30,12 @@ namespace QLVL.Entity
         public DateTime TransactionDate { get; set; } = DateTime.Now; // Giá trị mặc định
         public string Notes { get; set; }
 
+
+        public string Material_Name { get; set; } // Not in database
+        public string Supplier_Name { get; set; } // Not in database
+        public string User_Name { get; set; } // Not in database
+
+
         // Foreign Keys
         public int Material_Id { get; set; } // FK to Material
         public int Supplier_Id { get; set; } // FK to Supplier
