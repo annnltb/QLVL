@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,12 +45,38 @@ namespace QLVL.View
                 return;
             }
 
-            // Thêm đoạn code kết nối cơ sở dữ liệu để lưu thông tin đăng ký tại đây
-            // Ví dụ:
-            // UserDAL.AddUser(new User { FullName = fullName, Email = email, PhoneNumber = phoneNumber, Username = username, Password = password, Position = position });
+            // Kết nối cơ sở dữ liệu và lưu thông tin đăng ký
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=doantichhop_hc;Integrated Security=True;Encrypt=True";
 
-            MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); // Đóng form sau khi đăng ký thành công
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO Users (Name, Email, PhoneNumber, Username, Password, Position) VALUES (@FullName, @Email, @PhoneNumber, @Username, @Password, @Position)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FullName", fullName);
+                        command.Parameters.AddWithValue("@Email", email);
+                        command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password); // Nên mã hóa mật khẩu
+                        command.Parameters.AddWithValue("@Position", position);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close(); // Đóng form sau khi đăng ký thành công
+                    LoginForm login= new LoginForm();
+                    login.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi đăng ký: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
