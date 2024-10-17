@@ -83,11 +83,17 @@
     <Compile Include="View\Admin\MaterialManage\MaterialList.Designer.cs">
       <DependentUpon>MaterialList.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Employee\ChangePassword.cs">
+    <Compile Include="View\Employee\Plan\Addplan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Employee\ChangePassword.Designer.cs">
-      <DependentUpon>ChangePassword.cs</DependentUpon>
+    <Compile Include="View\Employee\Plan\Addplan.Designer.cs">
+      <DependentUpon>Addplan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\Plan\PlanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Employee\Plan\PlanForm.Designer.cs">
+      <DependentUpon>PlanForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Employee\StockTransaction.cs">
       <SubType>Form</SubType>
@@ -135,8 +141,11 @@
     <EmbeddedResource Include="View\Admin\MaterialManage\MaterialList.resx">
       <DependentUpon>MaterialList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Employee\ChangePassword.resx">
-      <DependentUpon>ChangePassword.cs</DependentUpon>
+    <EmbeddedResource Include="View\Employee\Plan\PlanForm.resx">
+      <DependentUpon>PlanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Employee\StockTransaction.resx">
+      <DependentUpon>StockTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>

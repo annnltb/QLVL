@@ -1,5 +1,6 @@
 ﻿using QLVL.View;
 using QLVL.View.Admin;
+using QLVL.View.Employee;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace QLVL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MaterialList());
+            Application.Run(new HomeForm());
         }
     }
 }
